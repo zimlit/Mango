@@ -24,6 +24,10 @@ extern Mango::Application* Mango::CreateApplication();
 
 
 int main(int argc, char** argv) {
+    Mango::Log::Init();
+
+    MG_CORE_INFO("initialized log");
+
     auto app = Mango::CreateApplication();
     
     app->Run();
@@ -35,6 +39,10 @@ int main(int argc, char** argv) {
 extern Mango::Application* Mango::CreateApplication();
 
 int main(int argc, char** argv) {
+    Mango::Log::Init();
+
+    MG_CORE_INFO("initialized log");
+
     auto app = Mango::CreateApplication();
     
     app->Run();

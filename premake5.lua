@@ -46,6 +46,7 @@ project "Mango"
 
     includedirs
     {
+        "Mango/vendor/spdlog/include"
     }
 
     filter "system:windows"
@@ -93,7 +94,8 @@ project "Sandbox"
 
     includedirs
     {
-        "Mango/src"
+        "Mango/src",
+        "Mango/vendor/spdlog/include"
     }
 
     links
