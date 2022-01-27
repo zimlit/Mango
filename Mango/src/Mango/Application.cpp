@@ -18,6 +18,8 @@
 */
 
 #include "Application.h"
+#include "Mango/Events/ApplicationEvent.h"
+#include "Mango/Log.h"
 
 namespace Mango {
 
@@ -30,6 +32,9 @@ namespace Mango {
     }
 
     void Application::Run() {
-        while (true) {}
+        WindowResizeEvent e(1280,720);
+        MG_TRACE(e);
+
+        while (true);
     }
 }
