@@ -19,8 +19,6 @@
 
 #pragma once
 
-#include <string>
-#include <functional>
 #include "Mango/Core.h"
 
 namespace Mango {

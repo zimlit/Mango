@@ -17,20 +17,21 @@
     along with Mango.  If not, see <https://www.gnu.org/licenses/>.    
 */
 
-#include "mgpch.h"
-#include "Log.h"
-#include <spdlog/sinks/stdout_color_sinks.h>
 
-namespace Mango {
-    std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-    std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+#pragma once
 
-    void Log::Init() {
-        spdlog::set_pattern("%^[%E] %l%@ %n: %v%$");
+#include <iostream>
+#include <memory>
+#include <utility>
+#include <algorithm>
+#include <functional>
 
-        s_CoreLogger = spdlog::stdout_color_mt("MANGO");
-        s_CoreLogger->set_level(spdlog::level::trace);
-        s_ClientLogger = spdlog::stdout_color_mt("APP");
-        s_ClientLogger->set_level(spdlog::level::trace);
-    }
-}
+#include <string>
+#include <sstream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+
+#ifdef MG_PLATFORM_WINDOWS
+    #include <Windows.h>
+#endif

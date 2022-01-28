@@ -38,6 +38,9 @@ project "Mango"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "mgpch.h"
+    pchsource "Mango/src/mgpch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",

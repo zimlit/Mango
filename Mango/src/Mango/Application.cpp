@@ -17,6 +17,7 @@
     along with Mango.  If not, see <https://www.gnu.org/licenses/>.    
 */
 
+#include "mgpch.h"
 #include "Application.h"
 #include "Mango/Events/ApplicationEvent.h"
 #include "Mango/Log.h"
