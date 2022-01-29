@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include "mgpch.h"
 #include "Mango/Core.h"
 
 namespace Mango {

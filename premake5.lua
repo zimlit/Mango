@@ -29,6 +29,10 @@ workspace "Mango"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Mango/vendor/GLFW/include"
+
+include "Mango/vendor/GLFW"
 
 project "Mango"
     location "Mango"
@@ -43,20 +47,48 @@ project "Mango"
 
     files
     {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/Mango/**.h",
+        "%{prj.name}/src/Mango/**.cpp",
+        "%{prj.name}/src/mgpch.h",
+        "%{prj.name}/src/mgpch.cpp",
     }
 
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
     }
+
+    links
+    {
+        "GLFW"
+    }
+
+    filter "system:linux"
+
+        files
+        {
+            "%{prj.name}/src/Platform/Linux/**.cpp",
+            "%{prj.name}/src/Platform/Linux/**.h",
+        }
+
+        links
+        {
+            "GL",
+            "pthread",
+        }
 
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"
         systemversion "latest"
+
+        files
+        {
+            "%{prj.name}/src/Platform/Windows/**.cpp",
+            "%{prj.name}/src/Platform/Windows/**.h",
+        }
 
         defines
         {
@@ -69,8 +101,17 @@ project "Mango"
             ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
         }
 
+        links
+        {
+            "opengl32.lib"
+        }
+
     filter "configurations:Debug"
-        defines "MG_DEBUG"
+        defines 
+        {
+            "MG_DEBUG",
+            "MG_ENABLE_ASSERTS",
+        }
         symbols "On"
 
     filter "configurations:Release"

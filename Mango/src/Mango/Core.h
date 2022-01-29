@@ -25,7 +25,23 @@
     #else
         #define MANGO_API __declspec(dllimport)
     #endif
+
+    #ifdef MG_ENABLE_ASSERTS
+        #define MG_ASSERT(x, ...) { if(!(x)) { MG_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+        #define MG_CORE_ASSERT(x, ...) { if(!(x)) { MG_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+    #else
+        #define MG_ASSERT(x, ...)
+        #define MG_CORE_ASSERT(x, ...)
+    #endif
 #else
+    #ifdef MG_ENABLE_ASSERTS
+        #define MG_ASSERT(x, ...) { if(!(x)) { MG_ERROR("Assertion Failed: {0}", __VA_ARGS__); __builtin_trap(); } }
+        #define MG_CORE_ASSERT(x, ...) { if(!(x)) { MG_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __builtin_trap(); } }
+    #else
+        #define MG_ASSERT(x, ...)
+        #define MG_CORE_ASSERT(x, ...)
+    #endif
+
     #define MANGO_API
 #endif
 
