@@ -21,7 +21,7 @@
 #include "Application.h"
 #include "Mango/Log.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Mango {
 
