@@ -17,37 +17,12 @@
     along with Mango.  If not, see <https://www.gnu.org/licenses/>.    
 */
 
-#pragma once
+#include "mgpch.h"
+#include "Layer.h"
 
-#ifdef MG_PLATFORM_WINDOWS
-extern Mango::Application* Mango::CreateApplication();
-
-
-int main(int argc, char** argv) {
-    Mango::Log::Init();
-
-    MG_CORE_INFO("initialized log");
-
-    auto app = Mango::CreateApplication();
+namespace Mango {
+    Layer::Layer(const std::string& name)
+        : m_DebugName(name) {}
     
-    app->Run();
-
-    delete app;
-    return 0;
+    Layer::~Layer() {}
 }
-#else
-extern Mango::Application* Mango::CreateApplication();
-
-int main(int argc, char** argv) {
-    Mango::Log::Init();
-
-    MG_CORE_INFO("initialized log");
-
-    auto app = Mango::CreateApplication();
-    
-    app->Run();
-
-    delete app;
-    return 0;
-}
-#endif

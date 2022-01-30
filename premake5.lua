@@ -105,6 +105,14 @@ project "Mango"
         {
             "opengl32.lib"
         }
+    filter {"configurations:Debug", "system:windows"}
+        buildoptions "/MDd"
+
+    filter {"configurations:Release", "system:windows"}
+        buildoptions "/MD"
+
+    filter {"configurations:Dist", "system:windows"}
+        buildoptions "/MD"
 
     filter "configurations:Debug"
         defines 
@@ -112,6 +120,7 @@ project "Mango"
             "MG_DEBUG",
             "MG_ENABLE_ASSERTS",
         }
+        
         symbols "On"
 
     filter "configurations:Release"

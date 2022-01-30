@@ -19,35 +19,27 @@
 
 #pragma once
 
-#ifdef MG_PLATFORM_WINDOWS
-extern Mango::Application* Mango::CreateApplication();
+#include "Mango/Core.h"
+#include "Layer.h"
 
+#include <vector>
 
-int main(int argc, char** argv) {
-    Mango::Log::Init();
+namespace Mango {
+    class MANGO_API LayerStack
+	{
+	public:
+		LayerStack();
+		~LayerStack();
 
-    MG_CORE_INFO("initialized log");
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+		void PopLayer(Layer* layer);
+		void PopOverlay(Layer* overlay);
 
-    auto app = Mango::CreateApplication();
-    
-    app->Run();
-
-    delete app;
-    return 0;
+		std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
+		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
+	private:
+		std::vector<Layer*> m_Layers;
+		std::vector<Layer*>::iterator m_LayerInsert;
+	};
 }
-#else
-extern Mango::Application* Mango::CreateApplication();
-
-int main(int argc, char** argv) {
-    Mango::Log::Init();
-
-    MG_CORE_INFO("initialized log");
-
-    auto app = Mango::CreateApplication();
-    
-    app->Run();
-
-    delete app;
-    return 0;
-}
-#endif

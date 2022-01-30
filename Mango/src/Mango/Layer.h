@@ -19,35 +19,22 @@
 
 #pragma once
 
-#ifdef MG_PLATFORM_WINDOWS
-extern Mango::Application* Mango::CreateApplication();
+#include "Mango/Core.h"
+#include "Mango/Events/Event.h"
 
+namespace Mango {
+    class MANGO_API Layer {
+    public:
+        Layer(const std::string& name = "Layer");
+        virtual ~Layer();
 
-int main(int argc, char** argv) {
-    Mango::Log::Init();
+        virtual void OnAttach() {}
+        virtual void OnDetach() {}
+        virtual void OnUpdate() {}
+        virtual void OnEvent(Event& event) {} 
 
-    MG_CORE_INFO("initialized log");
-
-    auto app = Mango::CreateApplication();
-    
-    app->Run();
-
-    delete app;
-    return 0;
+        inline const std::string& GetName() const { return m_DebugName; }
+    protected:
+        std::string m_DebugName;
+    };
 }
-#else
-extern Mango::Application* Mango::CreateApplication();
-
-int main(int argc, char** argv) {
-    Mango::Log::Init();
-
-    MG_CORE_INFO("initialized log");
-
-    auto app = Mango::CreateApplication();
-    
-    app->Run();
-
-    delete app;
-    return 0;
-}
-#endif

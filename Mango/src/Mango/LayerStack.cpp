@@ -17,20 +17,48 @@
     along with Mango.  If not, see <https://www.gnu.org/licenses/>.    
 */
 
+
 #include "mgpch.h"
-#include "Log.h"
-#include <spdlog/sinks/stdout_color_sinks.h>
+#include "LayerStack.h"
 
 namespace Mango {
-    std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-    std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
-    void Log::Init() {
-        spdlog::set_pattern("%^[%E] %l%@ %n: %v%$");
+	LayerStack::LayerStack()
+	{
+		m_LayerInsert = m_Layers.begin();
+	}
 
-        s_CoreLogger = spdlog::stdout_color_mt("MANGO");
-        s_CoreLogger->set_level(spdlog::level::trace);
-        s_ClientLogger = spdlog::stdout_color_mt("APP");
-        s_ClientLogger->set_level(spdlog::level::trace);
-    }
+	LayerStack::~LayerStack()
+	{
+		for (Layer* layer : m_Layers)
+			delete layer;
+	}
+
+	void LayerStack::PushLayer(Layer* layer)
+	{
+		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+	}
+
+	void LayerStack::PushOverlay(Layer* overlay)
+	{
+		m_Layers.emplace_back(overlay);
+	}
+
+	void LayerStack::PopLayer(Layer* layer)
+	{
+		auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
+		if (it != m_Layers.end())
+		{
+			m_Layers.erase(it);
+			m_LayerInsert--;
+		}
+	}
+
+	void LayerStack::PopOverlay(Layer* overlay)
+	{
+		auto it = std::find(m_Layers.begin(), m_Layers.end(), overlay);
+		if (it != m_Layers.end())
+			m_Layers.erase(it);
+	}
+
 }

@@ -22,6 +22,7 @@
 // for clients only
 
 #include "Mango/Application.h"
+#include "Mango/Layer.h"
 #include "Mango/Log.h"
 
 // =============================== //

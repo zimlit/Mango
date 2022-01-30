@@ -19,10 +19,24 @@
 
 #include <Mango.h>
 
+class ExampleLayer : public Mango::Layer {
+public:
+    ExampleLayer()
+        : Layer("Example") {}
+
+    void OnUpdate() override {
+        MG_INFO("ExampleLayer::Update");
+    }
+
+    void OnEvent(Mango::Event& event) override {
+        MG_TRACE("{0}", event);
+    }
+};
+
 class Sandbox : public Mango::Application {
 public:
     Sandbox() {
-
+        PushLayer(new ExampleLayer());
     }
 
     ~Sandbox() {
