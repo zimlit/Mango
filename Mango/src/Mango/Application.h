@@ -26,33 +26,36 @@
 #include "Events/Event.h"
 #include "Mango/Events/ApplicationEvent.h"
 
-namespace Mango {
+namespace Mango
+{
 
-    class MANGO_API Application {
+    class MANGO_API Application
+    {
     public:
         Application();
         virtual ~Application();
 
         void Run();
 
-        void OnEvent(Event& e);
+        void OnEvent(Event &e);
 
-        void PushLayer(Layer* layer);
-        void PushOverlay(Layer* layer);
+        void PushLayer(Layer *layer);
+        void PushOverlay(Layer *layer);
 
-        inline static Application& Get() { return *s_Instance; }
+        inline static Application &Get() { return *s_Instance; }
 
-        inline Window& GetWindow() { return *m_Window; }
-	private:
-        bool OnWindowClose(WindowCloseEvent& e);
+        inline Window &GetWindow() { return *m_Window; }
 
-		std::unique_ptr<Window> m_Window;
-		bool m_Running = true;
+    private:
+        bool OnWindowClose(WindowCloseEvent &e);
+
+        std::unique_ptr<Window> m_Window;
+        bool m_Running = true;
         LayerStack m_LayerStack;
-        static Application* s_Instance;
+        static Application *s_Instance;
     };
 
     // To be defined by client
-    Application* CreateApplication();
+    Application *CreateApplication();
 
 }

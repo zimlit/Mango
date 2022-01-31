@@ -20,31 +20,32 @@
 #pragma once
 
 #ifdef MG_PLATFORM_WINDOWS
-extern Mango::Application* Mango::CreateApplication();
+extern Mango::Application *Mango::CreateApplication();
 
-
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
     Mango::Log::Init();
 
     MG_CORE_INFO("initialized log");
 
     auto app = Mango::CreateApplication();
-    
+
     app->Run();
 
     delete app;
     return 0;
 }
 #else
-extern Mango::Application* Mango::CreateApplication();
+extern Mango::Application *Mango::CreateApplication();
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
     Mango::Log::Init();
 
     MG_CORE_INFO("initialized log");
 
     auto app = Mango::CreateApplication();
-    
+
     app->Run();
 
     delete app;

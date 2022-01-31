@@ -21,9 +21,11 @@
 
 #include "Event.h"
 
-namespace Mango {
+namespace Mango
+{
 
-	class MANGO_API KeyEvent : public Event {
+	class MANGO_API KeyEvent : public Event
+	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
 
@@ -35,7 +37,8 @@ namespace Mango {
 		int m_KeyCode;
 	};
 
-    class MANGO_API KeyPressedEvent : public KeyEvent {
+	class MANGO_API KeyPressedEvent : public KeyEvent
+	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
@@ -54,7 +57,8 @@ namespace Mango {
 		int m_RepeatCount;
 	};
 
-	class MANGO_API KeyReleasedEvent : public KeyEvent {
+	class MANGO_API KeyReleasedEvent : public KeyEvent
+	{
 	public:
 		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
@@ -67,5 +71,21 @@ namespace Mango {
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+
+	class MANGO_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
 	};
 }
