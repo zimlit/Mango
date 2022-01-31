@@ -32,9 +32,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Mango/vendor/GLFW/include"
 IncludeDir["Glad"] = "Mango/vendor/Glad/include"
+IncludeDir["ImGui"] = "Mango/vendor/imgui"
 
 include "Mango/vendor/GLFW"
 include "Mango/vendor/Glad"
+include "Mango/vendor/imgui"
 
 project "Mango"
     location "Mango"
@@ -53,6 +55,7 @@ project "Mango"
         "%{prj.name}/src/Mango/**.cpp",
         "%{prj.name}/src/mgpch.h",
         "%{prj.name}/src/mgpch.cpp",
+        "%{prj.name}/src/Platform/OpenGL/**"
     }
 
     includedirs
@@ -60,18 +63,21 @@ project "Mango"
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links
     {
         "GLFW",
-        "Glad"
+        "Glad",
+        "ImGui"
     }
 
     defines
     {
-        "GLFW_INCLUDE_NONE"
+        "GLFW_INCLUDE_NONE",
+        "IMGUI_IMPL_OPENGL_LOADER_CUSTOM"
     }
 
     filter "system:linux"

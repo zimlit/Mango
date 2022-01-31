@@ -17,34 +17,22 @@
     along with Mango.  If not, see <https://www.gnu.org/licenses/>.    
 */
 
-#include <Mango.h>
 
-class ExampleLayer : public Mango::Layer {
-public:
-    ExampleLayer()
-        : Layer("Example") {}
+#pragma once
 
-    void OnUpdate() override {
-        MG_INFO("ExampleLayer::Update");
-    }
+#include "Mango/Layer.h"
 
-    void OnEvent(Mango::Event& event) override {
-        MG_TRACE("{0}", event);
-    }
-};
+namespace Mango {
+    class MANGO_API ImGuiLayer : public Layer {
+    public:
+        ImGuiLayer();
+        ~ImGuiLayer();
 
-class Sandbox : public Mango::Application {
-public:
-    Sandbox() {
-        PushLayer(new ExampleLayer());
-        PushOverlay(new Mango::ImGuiLayer());
-    }
-
-    ~Sandbox() {
-
-    }
-};
-
-Mango::Application* Mango::CreateApplication() {
-    return new Sandbox();
+        void OnAttach();
+        void OnDetach();
+        void OnUpdate();
+        void OnEvent(Event& event);
+    private:
+        float m_Time = 0.0f;
+    };
 }

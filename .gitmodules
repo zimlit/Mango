@@ -4,3 +4,7 @@
 [submodule "Mango/vendor/GLFW"]
 	path = Mango/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+
+[submodule "Mango/vendor/imgui"]
+	path = Mango/vendor/imgui
+	url = https://github.com/TheCherno/imgui
