@@ -19,6 +19,10 @@
 
 #pragma once
 
+#ifdef MG_DEBUG
+    #define MG_ENABLE_ASSERTS
+#endif
+
 #ifdef MG_PLATFORM_WINDOWS
     #ifdef MG_BUILD_DLL
         #define MANGO_API __declspec(dllexport)

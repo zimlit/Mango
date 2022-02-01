@@ -42,6 +42,7 @@ project "Mango"
     location "Mango"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -96,7 +97,6 @@ project "Mango"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         files
@@ -120,37 +120,32 @@ project "Mango"
         {
             "opengl32.lib"
         }
-    filter {"configurations:Debug", "system:windows"}
-        buildoptions "/MDd"
-
-    filter {"configurations:Release", "system:windows"}
-        buildoptions "/MD"
-
-    filter {"configurations:Dist", "system:windows"}
-        buildoptions "/MD"
 
     filter "configurations:Debug"
         defines 
         {
             "MG_DEBUG",
-            "MG_ENABLE_ASSERTS",
         }
         
         symbols "On"
+        runtime "Debug"
+
 
     filter "configurations:Release"
         defines "MG_RELEASE"
         optimize "On"
+        runtime "Release"
 
     filter "configurations:Dist"
         defines "MG_DIST"
         optimize "On"
+        runtime "Release"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -185,11 +180,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "MG_DEBUG"
         symbols "On"
+        runtime "Debug"
 
     filter "configurations:Release"
         defines "MG_RELEASE"
         optimize "On"
+        runtime "Release"
 
     filter "configurations:Dist"
         defines "MG_DIST"
         optimize "On"
+        runtime "Release"
