@@ -19,6 +19,8 @@
 
 workspace "Mango"
     architecture "x64"
+    startproject "Sandbox"
+
 
     configurations
     {
@@ -34,9 +36,12 @@ IncludeDir["GLFW"] = "Mango/vendor/GLFW/include"
 IncludeDir["Glad"] = "Mango/vendor/Glad/include"
 IncludeDir["ImGui"] = "Mango/vendor/imgui"
 
-include "Mango/vendor/GLFW"
-include "Mango/vendor/Glad"
-include "Mango/vendor/imgui"
+group "Dependencies"
+	include "Mango/vendor/GLFW"
+	include "Mango/vendor/Glad"
+	include "Mango/vendor/imgui"
+
+group ""
 
 project "Mango"
     location "Mango"
@@ -113,7 +118,7 @@ project "Mango"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")        
         }
 
         links
