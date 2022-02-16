@@ -1,6 +1,9 @@
 /.vscode
+/.vs
 /bin
 /bin-int
 /Makefile
 /**/Makefile
 /imgui.ini
+/*.sln
+/**/*.vcxproj

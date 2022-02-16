@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Mango">
+      <UniqueIdentifier>{5771A70D-C385-CFBE-8C07-731EF8DACBEF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mango\Events">
+      <UniqueIdentifier>{5B559370-47B8-2215-F03D-5BCBDC7FEE97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mango\ImGui">
+      <UniqueIdentifier>{C14BCB7F-2D01-4475-B6F5-3D4C22AA3A79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Mango\Application.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Core.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\EntryPoint.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Events\ApplicationEvent.h">
+      <Filter>Mango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Events\Event.h">
+      <Filter>Mango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Events\KeyEvent.h">
+      <Filter>Mango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Events\MouseEvent.h">
+      <Filter>Mango\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\ImGui\ImGuiLayer.h">
+      <Filter>Mango\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Layer.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\LayerStack.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Log.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mango\Window.h">
+      <Filter>Mango</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mgpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Mango\Application.cpp">
+      <Filter>Mango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mango\ImGui\ImGuiLayer.cpp">
+      <Filter>Mango\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mango\Layer.cpp">
+      <Filter>Mango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mango\LayerStack.cpp">
+      <Filter>Mango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mango\Log.cpp">
+      <Filter>Mango</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mgpch.cpp" />
+  </ItemGroup>
+</Project>
